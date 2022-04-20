@@ -12,6 +12,7 @@ app.use(express.static('/Users/daurkrut/Desktop/WEB(B)/Anime'));
 app.use("/", require("./routes/root"));
 app.use("/naruto", require("./routes/naruto"));
 app.use("/blackclover", require("./routes/blackclover"));
+app.use("/logIn", require("./routes/LogIn"));
 
 app.post("/",((req,res) => {
     let name = req.body.animeName;
@@ -20,7 +21,7 @@ app.post("/",((req,res) => {
         response.on('data', data => {
             let a = JSON.parse(data);
             let mainChar = a.data[0].fact;
-            res.send("Hi " + mainChar);
+            res.send("Interesting facts about " + name + " is " + mainChar);
         })
         // res.send(response);
     });
