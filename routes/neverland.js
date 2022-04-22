@@ -3,6 +3,6 @@ const router = express.Router();
 const path = require('path');
 router
     .route("/")
-    .get((req, res) => res.sendFile(path.resolve('Pages/LogIn.html')));
+    .get((req, res) => res.sendFile(path.resolve('Pages/neverland.html')));
 
 module.exports = router;
