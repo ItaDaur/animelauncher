@@ -5,7 +5,9 @@ const https = require("https");
 
 router
     .route("/")
-    .get((req, res) => res.render(path.resolve('index.ejs')))
+    .get((req, res) => res.render(path.resolve('index.ejs'), {
+        interFact:"Empty"
+    }))
     // .post((req,res) => {
     //     let name = req.body.animeName;
     //     let url = "https://anime-facts-rest-api.herokuapp.com/api/v1/" + name;
