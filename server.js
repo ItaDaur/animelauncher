@@ -1,20 +1,27 @@
 const express = require("express");
 const app = express();
 const port = 3001;
+const ejs = require("ejs");
 var path = require('path');
 const https = require('https');
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
 
 
-app.use(express.static(path.resolve(__dirname)));
+app.use(express.static(path.resolve("public")));
 
 app.use("/", require("./routes/root"));
 app.use("/naruto", require("./routes/naruto"));
 app.use("/blackclover", require("./routes/blackclover"));
 app.use("/logIn", require("./routes/LogIn"));
-app.use("/neverland", require("./routes/neverland"))
-app.use("/bleach", require("./routes/bleach"))
+app.use("/neverland", require("./routes/neverland"));
+app.use("/bleach", require("./routes/bleach"));
+app.use("/demonSlayer", require("./routes/demonSlayer"));
+app.use("/hunter", require("./routes/hunter"));
+app.use("/gintama", require("./routes/gintama"));
+app.use("/heroAcademia", require("./routes/heroAcademia"));
+
 
 app.post("/",((req,res) => {
     let name = req.body.animeName;
@@ -22,8 +29,10 @@ app.post("/",((req,res) => {
     https.get(url, function (response) {
         response.on('data', data => {
             let a = JSON.parse(data);
-            let mainChar = a.data[0].fact;
-            res.send("Interesting facts about " + name + " is " + mainChar);
+            let mainChar = a.data[1].fact;
+            res.render(path.resolve("index.ejs"), {
+                interFact:mainChar
+            });
         })
     });
 }));
