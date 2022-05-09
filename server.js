@@ -1,13 +1,15 @@
 const express = require("express");
 const app = express();
-const port = 3001;
+let port = process.env.PORT;
 const ejs = require("ejs");
 var path = require('path');
 const https = require('https');
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
-
+if (port == null || port == "") {
+    port = 3001;
+}
 
 app.use(express.static(path.resolve("public")));
 
@@ -29,7 +31,7 @@ app.post("/",((req,res) => {
     https.get(url, function (response) {
         response.on('data', data => {
             let a = JSON.parse(data);
-            let mainChar = a.data[1].fact;
+            let mainChar = a.data[0].fact;
             res.render(path.resolve("index.ejs"), {
                 interFact:mainChar
             });
