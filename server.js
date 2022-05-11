@@ -30,10 +30,6 @@ mongoose.connect(dbConfig.url, {
     process.exit();
 });
 
-mongoose.Promise = global.Promise;
-
-
-
 app.use("/", require("./routes/root"));
 app.use("/naruto", require("./routes/naruto"));
 app.use("/blackclover", require("./routes/blackclover"));
@@ -46,16 +42,6 @@ app.use("/demonSlayer", require("./routes/demonSlayer"));
 app.use("/hunter", require("./routes/hunter"));
 app.use("/gintama", require("./routes/gintama"));
 app.use("/heroAcademia", require("./routes/heroAcademia"));
-
-app.post('/registration', (req, res) => {
-    create(req,res)
-});
-
-app.get('/history', (req, res) => {
-    findAll(req, res)
-});
-
-
 
 app.listen(port, () =>
     console.log(`App listening at http://localhost:${port}`)
