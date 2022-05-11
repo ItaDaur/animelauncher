@@ -5,7 +5,7 @@ let schema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    name: {
+    nickName: {
         type: String,
         default: ''
     },

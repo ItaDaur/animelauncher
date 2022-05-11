@@ -1,0 +1,14 @@
+<label for="data">Result of your query: </label>
+<%if(Array.isArray(mydata)){%>
+<table>
+    <tr><td>Email</td><td>Nick name</td></tr>
+
+    <%for(let a=0;a <mydata.length;a++){%>
+    <tr><td><%=mydata[a].nickName%></td><td><%=mydata[a].email%></td></tr>
+    <%}%>
+</table>
+<%}else{%>
+<label for="data" class="form-label"> <%=mydata%>
+</label>
+<%}%>
+<a href="/"><img class="mb-4" src="pic/Anime.jpg" alt="" width="100" height="100"><a>
