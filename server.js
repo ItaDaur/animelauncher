@@ -30,6 +30,8 @@ mongoose.connect(dbConfig.url, {
     process.exit();
 });
 
+mongoose.Promise = global.Promise;
+
 
 
 app.use("/", require("./routes/root"));
