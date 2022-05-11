@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-let port = process.env.PORT;
+let port = process.env.PORT || 3002;
 const ejs = require("ejs");
 var path = require('path');
 const https = require('https');
