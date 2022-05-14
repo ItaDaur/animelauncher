@@ -29,6 +29,15 @@
   <header>
     <div class="navbar navbar-dark bg-dark shadow-sm">
       <div class="container">
+        <ul class="nav mr-auto">
+          <li class="nav-item block-for-signin">
+            <a href="/designRating">
+              <div class="showRating">
+                <%=myData%>
+              </div>
+            </a>
+          </li>
+        </ul>
         <a href="#" class="navbar-brand d-flex align-items-center">
           <a href="/"><img src="pic/Anime.jpg" alt="logo" width="60rem" height="60rem"><strong style="margin-left:3rem">AnimeLauncher</strong></a>
         </a>
@@ -36,13 +45,19 @@
           <li class="nav-item block-for-signin">
             <a class="nav-link details-nav cd-signup" href="/logIn"><i class="fas fa-user-alt fa-2x"></i>
               <br>
-              <p>Вход</p>
+              <p>Log In</p>
             </a>
           </li>
-          <li class="nav-item block-for-signin" style="color:blue;">
+          <li class="nav-item block-for-signin">
             <a class="nav-link details-nav cd-signup" href="/history"><i class="fas fa-history fa-2x"></i>
               <br>
               <p>History</p>
+            </a>
+          </li>
+          <li class="nav-item block-for-signin">
+            <a class="nav-link details-nav cd-signup" href="/deletePage"><i class="fas fa-backspace fa-2x"></i>
+              <br>
+              <p>Delete</p>
             </a>
           </li>
 

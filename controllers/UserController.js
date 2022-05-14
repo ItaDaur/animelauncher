@@ -30,9 +30,10 @@ exports.findAll = async (req, res) => {
 // Find a single User with an id
 exports.findOne = async (req, res) => {
     try {
-        const user = await UserModel.findOne({email: req.query.email}).exec();
-        res.status(200).render('history', {mydata: "user :"+ user.nickName +" "
-                + user.password +" "+ user.email +" "+ user.passwordAgain
+        console.log("Salam")
+        const user = await UserModel.findOne({email: req.body.email}).exec();
+        res.status(200).render('history', {mydata: "user :" +
+                user.email + " was successful find"
         })
     } catch(error) {
         res.status(404).render('history', {mydata: error.message})
@@ -64,7 +65,8 @@ exports.update = async (req, res) => {
 };
 // Delete a user with the specified id in the request
 exports.destroy = async (req, res) => {
-    await UserModel.deleteOne({email: req.query.email}).then(data => {
+    const email = req.body.email;
+    await UserModel.deleteOne({email}).then(data => {
         if (!data) {
             res.status(404).render('history', {mydata: "User not found"}).redirect('/')
 

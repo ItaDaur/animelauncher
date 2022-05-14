@@ -6,6 +6,7 @@ const https = require("https");
 router
     .route("/")
     .get((req, res) => res.render(path.resolve('index.ejs'), {
-        interFact:"Empty"
+        interFact:"Empty",
+        myData:"0"
     }));
 module.exports = router;
