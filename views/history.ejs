@@ -1,3 +1,7 @@
+<!doctype html>
+<html lang="en">
+<%- include('layouts/header');-%>
+<body>
 <label for="data">Result of your query: </label>
 <%if(Array.isArray(mydata)){%>
 <table>
@@ -11,4 +15,9 @@
 <label for="data" class="form-label"> <%=mydata%>
 </label>
 <%}%>
-<a href="/"><img class="mb-4" src="pic/Anime.jpg" alt="" width="100" height="100"><a>
+<a href="/"><img class="mb-4" src="pic/Anime.jpg" alt="" width="100" height="100"></a>
+<%-include('layouts/footer')-%>
+</body>
+</html>
+
+

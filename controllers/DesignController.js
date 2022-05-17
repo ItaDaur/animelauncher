@@ -15,7 +15,7 @@ exports.insertNumbers = async (req,res) => {
     await design.save().then(data => {
         res.render('../index', {myData: calculate(req,res, data.rating)})
     }).catch(err => {
-        res.render('../history', {myData: err.message || "Some error occurred while creating user"})
+        res.render('../index', {myData: err.message || "Some error occurred while creating user"})
     })
 };
 

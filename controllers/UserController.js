@@ -27,14 +27,15 @@ exports.findAll = async (req, res) => {
         res.status(404).render('history', {mydata: error.message})
     }
 };
-// Find a single User with an id
-exports.findOne = async (req, res) => {
+// Find a single User with an email and password
+exports.logIn = async (req, res) => {
     try {
-        console.log("Salam")
-        const user = await UserModel.findOne({email: req.body.email}).exec();
-        res.status(200).render('history', {mydata: "user :" +
-                user.email + " was successful find"
-        })
+        const user = await UserModel.findOne(req.query, (err, users) => {
+            const message = users.length == 0 ? "Not Found" : "Found";
+            if(users.length == 0)
+                res.status(200).json({message, users});
+            else res.render('auth/userAccount', {users});
+        }).exec();
     } catch(error) {
         res.status(404).render('history', {mydata: error.message})
     }
@@ -47,17 +48,10 @@ exports.update = async (req, res) => {
         });
     }
 
-    const id = req.params.id;
-
-    await UserModel.findByIdAndUpdate(id, req.body, { useFindAndModify: false }).then(data => {
-        if (!data) {
-            res.status(404).send({
-                message: `User not found.`
-            });
-        }else{
-            res.send({ message: "User updated successfully." })
-        }
-    }).catch(err => {
+    await UserModel.findByIdAndUpdate(
+        {nickName: req.body.nickName, password: req.body.old_password},
+        {nickName: req.body.nickName, password: req.body.new_password}
+    ).catch(err => {
         res.status(500).send({
             message: err.message
         });
