@@ -1,4 +1,5 @@
 const NewAnimeModel = require('../models/NewAnimeModel')
+const User = require('../models/UserModel')
 const path = require('path')
 
 exports.home = async (req,res) =>{
@@ -16,13 +17,13 @@ exports.getAnime = async (req,res) =>{
 };
 
 exports.newAnime = async (req,res) => {
-    // if(req.session.userId){
-    //     return res.render('newPost',{
-    //         createPost:true
-    //     })
-    // }
-    // res.redirect('/')
-    return res.render('newPost')
+
+    if(req.session.userId){
+        return res.render('newPost',{
+            createPost:true
+        })
+    }
+    res.redirect('/')
 };
 
 exports.storeAnime = async (req,res) =>{

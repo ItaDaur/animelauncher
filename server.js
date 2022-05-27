@@ -3,7 +3,6 @@ const app = express();
 let port = process.env.PORT || 3002;
 const ejs = require("ejs");
 var path = require('path');
-const https = require('https');
 const methodOverride = require('method-override')
 var bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload')
@@ -18,6 +17,10 @@ const validateMiddleWare = require('./middleware/validationMiddleware')
 const expressSession = require('express-session')
 const flash = require('connect-flash')
 
+app.use(expressSession({
+    secret: 'keyboard cat'
+}))
+
 global.loggedIn = null;
 
 app.use(express.static(path.resolve("public")));
@@ -30,9 +33,7 @@ app.use("*",(req,res,next)=>{
     next()
 })
 
-const UserRoute = require('./routes/UserRoute')
-app.use('/user',UserRoute)
-
+// Needed Controllers
 const AnimeController = require('./controllers/NewAnimeController')
 
 const dbConfig = require('./config/database.config.js');
@@ -55,6 +56,7 @@ app.use("/deletePage", require("./routes/deletePage"));
 app.use("/anime/new", require('./routes/newPost'))
 app.use("/animes/store", require("./routes/AnimesStore"))
 app.get('/anime/:id', AnimeController.getAnime)
+app.use('/logout', require('./routes/logout'))
 
 app.use((req,res) => {
     res.render('notfound')

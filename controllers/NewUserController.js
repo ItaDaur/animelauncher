@@ -1,14 +1,16 @@
-const User = require('../models/User')
+const User = require('../models/UserModel')
 const bcrypt = require('bcrypt')
 
 exports.login = (req,res) => {
+
     res.render('login')
 }
 
 exports.loginUser = (req,res) => {
-    const {username, password} = req.body
 
-    User.findOne({username:username}, (error, user) => {
+    const {email, password} = req.body
+
+    User.findOne({email:email}, (error, user) => {
         if (user){
             bcrypt.compare(password, user.password, (error, same) => {
                 if (same) {
@@ -31,6 +33,11 @@ exports.logout = (req,res) => {
 }
 
 exports.newUser = (req,res) => {
+
+    if (req.session.userId) {
+        return res.redirect('/')
+    }
+
     var username = ""
     var password = ""
     const data = req.flash('data')[0];
@@ -40,7 +47,7 @@ exports.newUser = (req,res) => {
         password = data.password
     }
 
-    res.render('register', {
+    res.render('registration', {
         // errors: req.session.registrationErrors
         errors: req.flash('validationErrors'),
         username: username,
@@ -49,6 +56,11 @@ exports.newUser = (req,res) => {
 }
 
 exports.storeUser = (req,res) => {
+
+    if (req.session.userId) {
+        return res.redirect('/')
+    }
+
     User.create(req.body, (error, user) => {
         if (error) {
             const validationErrors = Object.keys(error.errors).map(key=> error.errors[key].message)

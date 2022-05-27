@@ -10,6 +10,14 @@
   <a href="/"><img class="mb-4" src="pic/Anime.jpg" alt="" width="100" height="100"><a>
   <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 
+      <% if(errors!=null && errors.length>0){%>
+        <ul class="list-group">
+          <% for (var i = 0; i < errors.length; i++) { %>
+            <li class="list-group-item list-group-item-danger"><%= errors[i] %></li>
+          <% } %>
+        </ul>
+      <%}%>
+
   <div class="form-floating mb-3">
   <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com">
   <label for="floatingInput">Email address</label>
@@ -21,10 +29,6 @@
 <div class="form-floating">
   <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
   <label for="floatingPassword">Password</label>
-</div>
-<div class="form-floating">
-  <input type="password" class="form-control" name="passwordAgain" id="floatingPassword" placeholder="Password">
-  <label for="floatingPassword">Password again</label>
 </div>
 
   <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
