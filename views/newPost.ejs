@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<%- include('layouts/header');-%>
+<body>
+<%- include('layouts/navbar');-%>
+<div class="container">
+
+    <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Create new Anime</h4>
+        <form action="/animes/store" class="needs-validation" method="post" enctype="multipart/form-data">
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <label for="id" class="form-label">Input title anime</label>
+                    <input type="text" class="form-control" name="title" placeholder="Enter title">
+                </div>
+                <div>
+                    Download image of anime
+                    <input type="file" id="image" name="image">
+                </div>
+
+
+            </div>
+
+            <hr class="my-4">
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Create new Anime</button>
+        </form>
+    </div>
+</div>
+
+<%-include('layouts/footer')-%>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('layouts/header');-%>
+
+<body>
+  <!-- Header navbar-->
+  <header>
+    <%- include('layouts/navbar');-%>
+  </header>
+
+  <!-- body -->
+  <main>
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+          <% for (var i = 0; i < animeposts.length; i++){ %>
+            <div class="col">
+              <div class="card h-100">
+                <a href="/anime/<%= animeposts[i]._id %>"><img src="<%= animeposts[i].image %>" class="card-img-top" alt="<%= animeposts[i].title %>"></a>
+                <div class="card-body">
+                  <h5 class="card-title"><%= animeposts[i].title %></h5>
+                </div>
+                <div class="card-body">
+                  <a href="/anime/<%= animeposts[i]._id %>" class="card-link"><%= animeposts[i].title %></a>
+                </div>
+              </div>
+            </div>
+          <%}%>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- proposal -->
+  <nav class="proposal">
+
+  </nav>
+
+  <!-- Footer -->
+  <%-include('layouts/footer')-%>
+
+  <script type="javaS/index.js">
+
+  </script>
+</body>
+
+</html>

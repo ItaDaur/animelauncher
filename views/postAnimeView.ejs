@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('layouts/header');-%>
+
+<body>
+<!-- Header navbar-->
+<header>
+    <%- include('layouts/navbar');-%>
+</header>
+
+<!-- body -->
+<main>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-3">
+                    <img src="<%=animepost.image%>" alt="<%= animepost.title%>" class="picForPage">
+
+                </div>
+                <div class="col-9" style="padding-left:5rem">
+                    <h1><%=animepost.title%></h1>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+</main>
+
+
+<!-- Footer -->
+<%-include('layouts/footer')-%>
+
+<script type="javaS/index.js">
+
+</script>
+</body>
+
+</html>

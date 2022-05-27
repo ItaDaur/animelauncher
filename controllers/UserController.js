@@ -30,12 +30,10 @@ exports.findAll = async (req, res) => {
 // Find a single User with an email and password
 exports.logIn = async (req, res) => {
     try {
-        const user = await UserModel.findOne(req.query, (err, users) => {
-            const message = users.length == 0 ? "Not Found" : "Found";
-            if(users.length == 0)
-                res.status(200).json({message, users});
-            else res.render('auth/userAccount', {users});
-        }).exec();
+        const user = await UserModel.findOne({email: req.query.email}).exec();
+        res.status(200).render('history', {mydata: "user :" +
+                user.email + " was successful find"
+        })
     } catch(error) {
         res.status(404).render('history', {mydata: error.message})
     }
