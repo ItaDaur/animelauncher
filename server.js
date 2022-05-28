@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 let port = process.env.PORT || 3002;
 const ejs = require("ejs");
+const swaggerUI = require('swagger-ui-express')
+swaggerDocument = require('./swagger.json')
 var path = require('path');
 const methodOverride = require('method-override')
 var bodyParser = require('body-parser');
@@ -23,6 +25,7 @@ app.use(expressSession({
 
 global.loggedIn = null;
 
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 app.use(express.static(path.resolve("public")));
 app.use(express.json())
 app.use(fileUpload())

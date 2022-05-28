@@ -1,0 +1,458 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Anime website",
+    "description": "Watch anime free and flexible",
+    "license": {
+      "name": "GIT",
+      "url": "https://github.com/ItaDaur/animelauncher"
+    }
+  },
+  "host": "localhost:3002",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Anime",
+      "description": "API for users in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": ["AnimeView"],
+        "summary": "Get all anime in system",
+        "responses": {
+          "200": {
+            "description": "Anime show",
+            "schema": {
+              "$ref": "#/definitions/Animes"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax"
+          },
+          "401": {
+            "description": "You are not authorized to manage the resource"
+          },
+          "404": {
+            "description": "The resource you were trying to reach is not found"
+          },
+          "409": {
+            "description": "Database error"
+          },
+          "500": {
+            "description": "Application failed to process the request"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "tags": ["Log out"],
+        "summary": "Redirect on main page",
+        "responses": {
+          "200": {
+            "description": "Main page",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax"
+          },
+          "401": {
+            "description": "You are not authorized to manage the resource"
+          },
+          "404": {
+            "description": "The resource you were trying to reach is not found"
+          },
+          "409": {
+            "description": "Database error"
+          },
+          "500": {
+            "description": "Application failed to process the request"
+          }
+        }
+      }
+    },
+    "/logIn": {
+      "get": {
+        "tags": ["Log in"],
+        "summary": "Log in system",
+        "responses": {
+          "200": {
+            "description": "Go to logIn page",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax"
+          },
+          "401": {
+            "description": "You are not authorized to manage the resource"
+          },
+          "404": {
+            "description": "The resource you were trying to reach is not found"
+          },
+          "409": {
+            "description": "Database error"
+          },
+          "500": {
+            "description": "Application failed to process the request"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Log in"],
+        "summary": "Log in system",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to find in database",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": [
+          "application/json/ejs"
+        ],
+        "responses": {
+          "200": {
+            "description": "input data in the log in forum",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax"
+          },
+          "401": {
+            "description": "You are not authorized to manage the resource"
+          },
+          "404": {
+            "description": "The resource you were trying to reach is not found"
+          },
+          "409": {
+            "description": "Database error"
+          },
+          "500": {
+            "description": "Application failed to process the request"
+          }
+        }
+      }
+    },
+    "/registration": {
+      "get": {
+        "tags": ["Registration"],
+        "summary": "reg in system",
+        "responses": {
+          "200": {
+            "description": "Go to registration page",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax"
+          },
+          "401": {
+            "description": "You are not authorized to manage the resource"
+          },
+          "404": {
+            "description": "The resource you were trying to reach is not found"
+          },
+          "409": {
+            "description": "Database error"
+          },
+          "500": {
+            "description": "Application failed to process the request"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Registration"],
+        "summary": "Reg in system",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": [
+          "application/json/ejs"
+        ],
+        "responses": {
+          "200": {
+            "description": "input data in the reg forum",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax"
+          },
+          "401": {
+            "description": "You are not authorized to manage the resource"
+          },
+          "404": {
+            "description": "The resource you were trying to reach is not found"
+          },
+          "409": {
+            "description": "Database error"
+          },
+          "500": {
+            "description": "Application failed to process the request"
+          }
+        }
+      }
+    },
+    "/history": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get all users in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax"
+          },
+          "401": {
+            "description": "You are not authorized to manage the resource"
+          },
+          "404": {
+            "description": "The resource you were trying to reach is not found"
+          },
+          "409": {
+            "description": "Database error"
+          },
+          "500": {
+            "description": "Application failed to process the request"
+          }
+        }
+      }
+    },
+    "/deletePage": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Go to delete form",
+        "responses": {
+          "200": {
+            "description": "Came",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax"
+          },
+          "401": {
+            "description": "You are not authorized to manage the resource"
+          },
+          "404": {
+            "description": "The resource you were trying to reach is not found"
+          },
+          "409": {
+            "description": "Database error"
+          },
+          "500": {
+            "description": "Application failed to process the request"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete user with given ID",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": [
+          "application/json/ejs"
+        ],
+        "responses": {
+          "200": {
+            "description": "User is deleted",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax"
+          },
+          "401": {
+            "description": "You are not authorized to manage the resource"
+          },
+          "404": {
+            "description": "The resource you were trying to reach is not found"
+          },
+          "409": {
+            "description": "Database error"
+          },
+          "500": {
+            "description": "Application failed to process the request"
+          }
+        }
+      }
+    },
+    "/animes/store": {
+      "post": {
+        "tags": ["Anime"],
+        "summary": "Add new anime",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Create anime",
+            "schema": {
+              "$ref": "#/definitions/Anime"
+            }
+          }
+        ],
+        "produces": [
+          "application/json/ejs"
+        ],
+        "responses": {
+          "200": {
+            "description": "New anime created",
+            "schema": {
+              "$ref": "#/definitions/Anime"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax"
+          },
+          "401": {
+            "description": "You are not authorized to manage the resource"
+          },
+          "404": {
+            "description": "The resource you were trying to reach is not found"
+          },
+          "409": {
+            "description": "Database error"
+          },
+          "500": {
+            "description": "Application failed to process the request"
+          }
+        }
+      }
+    },
+    "/anime/new": {
+      "get": {
+        "tags": ["Anime"],
+        "summary": "Go to add anime form",
+        "responses": {
+          "200": {
+            "description": "Came",
+            "schema": {
+              "$ref": "#/definitions/Anime"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax"
+          },
+          "401": {
+            "description": "You are not authorized to manage the resource"
+          },
+          "404": {
+            "description": "The resource you were trying to reach is not found"
+          },
+          "409": {
+            "description": "Database error"
+          },
+          "500": {
+            "description": "Application failed to process the request"
+          }
+        }
+      }
+    },
+    "/anime/{id}": {
+      "get": {
+        "tags": ["Anime"],
+        "summary": "Go to new anime page",
+        "responses": {
+          "200": {
+            "description": "Came",
+            "schema": {
+              "$ref": "#/definitions/Anime"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood by the server due to malformed syntax"
+          },
+          "401": {
+            "description": "You are not authorized to manage the resource"
+          },
+          "404": {
+            "description": "The resource you were trying to reach is not found"
+          },
+          "409": {
+            "description": "Database error"
+          },
+          "500": {
+            "description": "Application failed to process the request"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Anime": {
+      "required": ["title", "image"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      }
+    },
+    "Animes": {
+      "type": "array",
+      "$ref": "#/definitions/Anime"
+    },
+    "User": {
+      "required": ["email", "password"],
+      "properties": {
+        "email": {
+          "type": "string",
+          "required": true,
+          "uniqueItems": true
+        },
+        "nickname": {
+          "type": "string",
+          "default": ""
+        },
+        "password": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "Users": {
+      "type": "array",
+      "$ref": "#/definitions/User"
+    }
+  }
+}

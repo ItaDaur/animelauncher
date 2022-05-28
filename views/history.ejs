@@ -1,22 +1,33 @@
-<!doctype html>
-<html lang="en">
 <%- include('layouts/header');-%>
 <body>
 <%- include('layouts/navbar');-%>
-<label for="data">Result of your query: </label>
 <%if(Array.isArray(mydata)){%>
-<table>
-    <tr><td>Email</td><td>Nick name</td></tr>
+<table class="table" style="width: 40rem; margin: 4rem 25rem">
 
+    <thead>
+        <tr>
+            <th scope="col">Email</th>
+            <th scope="col">Nick name</th>
+        </tr>
+    </thead>
+    <tbody>
     <%for(let a=0;a <mydata.length;a++){%>
-    <tr><td><%=mydata[a].nickName%></td><td><%=mydata[a].email%></td></tr>
+
+    <tr>
+        <th scope="row"><%=a%></th>
+        <td><%=mydata[a].nickName%></td>
+        <td><%=mydata[a].email%></td>
+    </tr>
+
     <%}%>
+
+    </tbody>
 </table>
 <%}else{%>
 <label for="data" class="form-label"> <%=mydata%>
 </label>
 <%}%>
-<a href="/"><img class="mb-4" src="pic/Anime.jpg" alt="" width="100" height="100"></a>
+<a href="/"><img class="mb-4" src="pic/Anime.jpg" alt="" width="100" height="100" style="margin-left: 43rem"></a>
 <%-include('layouts/footer')-%>
 </body>
 </html>
